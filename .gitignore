@@ -1,6 +1,11 @@
 venv/
-db/
 __pycache__/
 *.pyc
+
+# Ignore contents but keep folders
+data/*
+!data/.gitkeep
+
+db/*
+!db/.gitkeep
 .env
-data/temp.pdf
