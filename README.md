@@ -67,25 +67,27 @@ pdf_agent/
 
 ```
 git clone: [https://github.com/Adunc64/AI-PDF-Reader]
-cd pdf_agent
 ```
 
-### 2. Create virtual environment
+### 2. Create an empty folder named db 
+
+### 3. Create virtual environment
 
 ```
 python -m venv venv
 venv\Scripts\activate   # Windows
 ```
 
-### 3. Install dependencies
+### 4. Install dependencies
 
 ```
 pip install langchain langchain-community langchain-core chromadb pypdf sentence-transformers streamlit ollama
 ```
 
-### 4. Install Ollama
+### 5. Install Ollama
 
 Download: [https://ollama.com]
+
 
 Run model:
 
