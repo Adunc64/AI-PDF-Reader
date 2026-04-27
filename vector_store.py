@@ -8,7 +8,25 @@ embedding_model = HuggingFaceEmbeddings(model_name="sentence-transformers/all-Mi
 
 #create and store vector database
 def create_vector_store(chunks, embedding_model):
-    vectorstore = Chroma.from_documents(documents=chunks, embedding=embedding_model, persist_directory="db")
+
+    # Load existing DB
+    vectorstore = Chroma(
+        persist_directory="db",
+        embedding_function=embedding_model
+    )
+
+    # Clear existing data (SAFE)
+    try:
+        vectorstore.delete_collection()
+    except:
+        pass
+
+    # Recreate with new data
+    vectorstore = Chroma.from_documents(
+        documents=chunks,
+        embedding=embedding_model,
+        persist_directory="db"
+    )
     vectorstore.persist()
     return vectorstore
 

@@ -18,7 +18,7 @@ def load_vectorstore():
 
 # create retriever
 def get_retriever(vectorstore):
-    retriever = vectorstore.as_retriever(search_kwargs={"k": 3})
+    retriever = vectorstore.as_retriever(search_kwargs={"k": 2})
     return retriever
 
 # load llm
@@ -36,7 +36,7 @@ def ask_question(query):
     relevant_docs = retriever.invoke(query)
 
     # combine retrieved chunks into context
-    context = "\n\n".join([doc.page_content for doc in relevant_docs])
+    context = "\n\n".join([doc.page_content[:500] for doc in relevant_docs])
 
     # prompt
     prompt = f"""You are an AI assistant. Answer ONLY from the provided context.
